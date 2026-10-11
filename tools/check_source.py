@@ -13,6 +13,7 @@ BLOCKED_SUFFIXES = {
     '.pt', '.onnx', '.bin', '.dll', '.exe', '.pyc', '.cs8', '.cu8', '.lnk',
     '.zip', '.7z', '.log', '.jsonl', '.sigmf-data', '.sigmf-meta',
 }
+README_MEDIA = {'docs/media/tracking.gif', 'docs/media/workspace.gif'}
 CONTENT_RULES = {
     'machine-specific path': re.compile(r'[A-Z]:[\\/](?:Users|devProject)[\\/]', re.I),
     'private key': re.compile(r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----'),
@@ -38,6 +39,10 @@ def main():
             errors.append(f'{name}: local or private file')
             continue
         data = (ROOT / path).read_bytes()
+        if name in README_MEDIA:
+            if not data.startswith((b'GIF87a', b'GIF89a')) or len(data) > 8_000_000:
+                errors.append(f'{name}: expected a GIF smaller than 8 MB')
+            continue
         if len(data) > 2_000_000:
             errors.append(f'{name}: unexpected large source file')
         try:

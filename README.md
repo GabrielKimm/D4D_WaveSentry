@@ -64,3 +64,7 @@ docs/                   설치·운영 문서
 ```
 
 런타임에 생성되는 `runtime/`, `output/`, `settings.json`과 별도 모델·샘플은 Git에서 제외됩니다. 소스 검사 도구가 커밋 대상의 바이너리, 실측 데이터, 개인 PC 경로와 인증정보 패턴을 추가로 확인합니다.
+
+## UNO Q 보드 실험 기록
+
+[UNO Q 추론 파이프라인·사양·실측 및 GPU 검토](docs/UNO_Q_INFERENCE.md): 별도 보드에서 수행한 ClikaRT CPU 실행 결과와 향후 연동 계획입니다. 현재 Windows 앱의 실행 경로와 구분합니다.

@@ -13,7 +13,10 @@ BLOCKED_SUFFIXES = {
     '.pt', '.onnx', '.bin', '.dll', '.exe', '.pyc', '.cs8', '.cu8', '.lnk',
     '.zip', '.7z', '.log', '.jsonl', '.sigmf-data', '.sigmf-meta',
 }
-README_MEDIA = {'docs/media/tracking.gif', 'docs/media/workspace.gif'}
+README_MEDIA = {
+    'docs/media/tracking.gif', 'docs/media/workspace.gif',
+    'docs/media/halo-signal.gif', 'docs/media/halo-map.gif',
+}
 CONTENT_RULES = {
     'machine-specific path': re.compile(r'[A-Z]:[\\/](?:Users|devProject)[\\/]', re.I),
     'private key': re.compile(r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----'),

@@ -13,7 +13,7 @@ Capture signals. Inspect evidence. Follow the situation.
 ![Python 3.12](https://img.shields.io/badge/Python-3.12-ACEDD0?style=flat-square&labelColor=181C20)
 ![PySide6](https://img.shields.io/badge/UI-PySide6-ACEDD0?style=flat-square&labelColor=181C20)
 
-[Quick start](#quick-start) · [Operating modes](#operating-modes) · [Development](#development) · [Documentation](#documentation)
+[Windows workspace](#inside-the-workspace) · [Halo interface](#halo-interface) · [Quick start](#quick-start) · [Documentation](#documentation)
 
 </div>
 
@@ -40,6 +40,22 @@ The animations show the application's **demo mode**, captured from its actual Qt
 | Fixed-band reception and adaptive 2.4/5 GHz survey | Spectrum, model inputs, detection boxes, and evidence age | Confirmed-detection output to a NU-87 USB indicator |
 | Candidate revisits and time-decayed evidence | Searchable observations and synchronized track details | IQ, image, and verdict snapshots for later review |
 | Recorded-image inference and hardware-free scenarios | Explicit stale-data, quality, and observation-gap states | Resizable panels and a saved workspace layout |
+
+## Halo interface
+
+**Signal awareness on a circular display.** Halo presents the current detection state, a rolling NU-87 Wi-Fi RSSI chart, and the age of the latest received status. An alert can be acknowledged while the display continues updating.
+
+![Halo signal interface: monitoring changes to signal detected, RSSI bars and packet age update, the alert is acknowledged, and clear input restores monitoring.](docs/media/halo-signal.gif)
+
+<p align="center"><sub>Monitor → detect → acknowledge → recover · 20-second RSSI history</sub></p>
+
+**Explore the situation with touch.** Pan across the map, change its scale, return to the home position, and acknowledge a selected contact. The scenario continues to introduce contacts and update range and bearing as the map moves.
+
+![Halo situation map: contacts appear and move, the map scrolls in two directions, zoom changes, home recenters the view, and a contact is acknowledged.](docs/media/halo-map.gif)
+
+<p align="center"><sub>Updating contacts → drag to pan → zoom → recenter → acknowledge</sub></p>
+
+These are captures of the **actual Halo firmware UI running in its LVGL simulator**, with synthetic detection events and radio telemetry. They are not recordings of a physical device or measured RF performance. The map uses a built-in scenario; its positions and affiliations are simulated. In the current Wi-Fi firmware, radio reception runs only on the main screen and is disabled on the map and other pages. Halo firmware is maintained separately from this Windows source distribution.
 
 ## Quick start
 
@@ -110,15 +126,15 @@ tools/                  Setup support, model export, capture, and validation
 docs/                   Setup, architecture, and README media
 ```
 
-To regenerate both previews on Windows with the native Qt platform:
+To regenerate the two Windows previews with the native Qt platform:
 
 ```powershell
 .\.venv\Scripts\python.exe tools\capture_readme.py
 ```
 
-The capture tool uses the actual demo widgets and a controlled scenario clock at 10 fps. It never starts the radio, model, or USB indicator. Only the two optimized GIFs are published; individual frames and capture reports stay in the ignored `output/` directory.
+The capture tool uses the actual demo widgets and a controlled scenario clock at 10 fps. It never starts the radio, model, or USB indicator. Halo previews use the separate firmware's LVGL renderer at its native 466×466 resolution, framed with English captions at 10 fps. See [preview details](docs/media/README.md) for provenance and timing. Only optimized GIFs are published; individual frames and capture reports stay in the ignored `output/` directory.
 
-Runtime state, logs, local settings, models, and samples are excluded from Git. The source check permits only the two documented GIF assets and rejects unexpected binaries, local paths, and credential patterns.
+Runtime state, logs, local settings, models, and samples are excluded from Git. The source check permits only the four documented GIF assets and rejects unexpected binaries, local paths, and credential patterns.
 
 </details>
 

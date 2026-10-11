@@ -1,0 +1,6 @@
+-c requirements-lock.txt
+numpy
+scipy
+pillow
+PySide6
+pyserial

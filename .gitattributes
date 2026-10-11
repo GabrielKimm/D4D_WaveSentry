@@ -1,0 +1,14 @@
+* text=auto eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.js text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+# Preserve the training reference's verified byte identity.
+vendor/iq_to_image.py -text
+# Keep the upstream font license byte-for-byte, including its whitespace.
+assets/branding/Manrope-OFL.txt -text -whitespace

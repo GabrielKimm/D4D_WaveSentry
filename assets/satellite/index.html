@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WaveSentry · Daegu Satellite</title>
+<link rel="stylesheet" href="vendor/cesium/Widgets/widgets.css"><link rel="stylesheet" href="satellite.css">
+<script src="vendor/cesium/Cesium.js"></script><script src="qtwebchannel.js"></script>
+</head><body>
+<div id="globe" aria-label="대구 공군기지 일대 공개 위성영상"></div>
+<div class="shade"></div><canvas id="tracks" aria-label="드론 위치와 최근 궤적"></canvas>
+<div id="labels"></div>
+<header class="map-heading glass"><div class="eyebrow">GEOSPATIAL / DAEGU</div><h1>대구 11전비 <span>주변 상황</span></h1><div class="geo">35.8942° N &nbsp; 128.6589° E <span>뷰 중심 · WGS84</span></div></header>
+<div class="track-summary glass"><div class="live" id="rx-state">LIVE</div><div><b id="count-total">03</b><span>TRACKS</span></div><i></i><div class="friendly"><b id="count-friendly">02</b><span>아군</span></div><div class="hostile"><b id="count-hostile">00</b><span>적군</span></div><div class="unknown"><b id="count-unknown">01</b><span>미식별</span></div></div>
+<nav class="map-controls glass" aria-label="지도 조작"><button id="home" title="전체 기체와 지도 중심 보기">⌖</button><button id="zoom-in" title="지도 확대">+</button><button id="zoom-out" title="지도 축소">−</button><span></span><button id="north" title="북쪽 위로 정렬">N ↑</button><button id="tone" title="위성영상 밝기 전환">영상</button></nav>
+<div class="layer-note glass"><span class="swatch"></span>ESRI WORLD IMAGERY <span class="separator">/</span> 공개 위성영상 <span class="dot"></span><span id="imagery-state">연결 중</span></div>
+<div class="scale glass"><span id="scale-text">500 m</span><div id="scale-line"></div><small>N-UP · 궤적 60 s · 벡터 20 s</small></div>
+<div class="legend glass"><span class="friendly">△ 아군</span><span class="hostile">◇ 적군</span><span class="unknown">○ 미식별</span></div>
+<div id="loading" class="loading glass"><div class="eyebrow">WAVESENTRY / IMAGERY</div><h2>위성지도 연결 중</h2><p>공개 위성영상과 관측 정보를 준비합니다.</p><div class="loader"></div></div>
+<script src="satellite.js"></script></body></html>

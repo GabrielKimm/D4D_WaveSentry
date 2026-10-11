@@ -1,0 +1,35 @@
+name: Windows checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    env:
+      QT_QPA_PLATFORM: offscreen
+      WAVESENTRY_DEMO_MAP: schematic
+      D4D_NU87_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements*.txt
+      - name: Install and verify dependencies
+        run: |
+          python -m pip install -r requirements-dev.txt
+          python -m pip check
+      - name: Check source distribution
+        run: python tools/check_source.py
+      - name: Run regression tests
+        run: python -m pytest -q
+      - name: Launch the GUI without hardware or private assets
+        run: python main.py --demo --quit-after 3
